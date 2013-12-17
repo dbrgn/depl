@@ -15,6 +15,7 @@ deploy:
         url: localhost
         redirect: null  # 'http' to redirect to the http port
         port: 80
+        manage.py: manage.py  # path to manage.py file
         settings: null  # depl searches it automatically - typically project.settings
         admin:
             user: null

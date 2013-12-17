@@ -36,13 +36,15 @@ from fabric.api import cd, prefix, put, sudo, warn_only, local
 
 
 def deploy(settings):
-    if not exists('manage.py'):
+    # manage.py
+    manage_module = settings['manage.py']
+    if not exists(manage_module):
         raise LookupError('Django projects need a manage.py')
 
     # settings
     settings_module = settings['settings']
     if settings_module is None:
-        with open('manage.py') as f:
+        with open(manage_module) as f:
             m = re.search('''["']DJANGO_SETTINGS_MODULE['"], ["']([\d\w_.]+)["']''',
                           f.read())
             if not m:
